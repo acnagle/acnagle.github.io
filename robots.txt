@@ -2,4 +2,3 @@
 
 User-agent: *
 Disallow: /AlliotNagleCV.pdf
-Disallow: /contact.html
