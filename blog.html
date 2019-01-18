@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="css/main.css">
     
     <style>
-        #post {
+        .post {
             margin: auto;
             color: #000000;
             width: 75%;
@@ -42,11 +42,11 @@
             max-height: 100%;
         }
         
-        #post:not(:last-child) {
+        .post:not(:last-child) {
             margin-bottom: 5px;
         }
         
-        #post-info {
+        .post-info {
             float: right;
         }
     </style>
@@ -59,22 +59,29 @@
 
     <!-- Add your site or application content here -->
     <div style="padding-top: 35px; padding-bottom: 35px;">
-        <div id="main-window" style="padding-bottom: 25px;">
+        <div class="main-window" style="padding-bottom: 25px;">
             <div style="padding-bottom: 25px;">
-                <ul id="nav-bar">
-                    <li id="nav-li"><a href="contact.html" id="nav-a">contact me 📫</a></li>
-                    <li id="nav-li"><a href="AlliotNagleCV.pdf" id="nav-a">cv 📄</a></li>
-                    <li id="nav-li"><a href="blog.html" id="nav-a">Conv(X) blog 📝</a></li>
-                    <li id="nav-li"><a href="index.html" id="nav-a">home 🏡</a></li>
+                <ul class="nav">
+                    <li><a href="index.html">home 🏡</a></li>
+                    <li><a href="blog.html">Conv(X) blog 📝</a></li>
+                    <li class="dropdown">
+                        <button class="dropbtn">coursework 📚</button>
+                        <div class="dropdown-content">
+                            <a href="cs760.html">CS 760</a>
+                            <a href="ece401.html">ECE 401</a>
+                        </div>
+                    </li>
+                    <li><a href="AlliotNagleCV.pdf">cv 📄</a></li>
+                    <li><a href="contact.html">contact me 📫</a></li>
                 </ul>
             </div>
-            <div id="post">
-                <a href="blog_welcome_1.html" title="Welcome to the Conv(X) blog!" target="_self" id="links">Welcome to the Conv(X) blog!</a>
-                <span id="post-info"><i>12/22/2018 @ 10:54 PM CST</i></span>
+            <div class="post">
+                <a href="./posts/blog_welcome_1.html" title="Welcome to the Conv(X) blog!" target="_self" class="links">Welcome to the Conv(X) blog!</a>
+                <span class="post-info"><i>12/22/2018 @ 10:54 PM CST</i></span>
             </div>
-            <div id="post">
-                <a href="./posts/Introduction%20to%20Information%20Theory.pdf" title="Introduction to Information Theory" target="_self" id="links">Introduction to Information Theory</a>
-                <span id="post-info"><i>01/17/2019 @ 5:02 PM CST</i></span>
+            <div class="post">
+                <a href="./posts/intro_to_information_theory_2.pdf" title="An Introduction to Information Theory" target="_self" class="links">An Introduction to Information Theory</a>
+                <span class="post-info"><i>01/17/2019 @ 5:02 PM CST</i></span>
             </div>
         </div>
     </div>

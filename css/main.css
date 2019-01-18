@@ -105,39 +105,7 @@ body {
     height: 100%;
 }
 
-#nav-bar {
-    list-style-type: none;
-    margin: 0em;
-    padding: 0px;
-    overflow: hidden;
-    background-color: #262726;
-}
-
-#nav-li {
-    float: right;
-}
-
-#nav-a {
-    display: block;
-    color: #ffffff;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#nav-a:hover {
-    background-color: #6e7777;
-}
-
-#nav-a:active {
-    background-color: #6e7777;
-}
-
-#name {
-    float: left;
-}
-
-#main-window {
+.main-window {
     margin: auto;
     color: #000000;
     width: 85%;
@@ -149,30 +117,108 @@ body {
     overflow: auto;
 }
 
+.nav {
+    list-style-type: none;
+    margin: 0em;
+    padding: 0px;
+    overflow: hidden;
+    background-color: #262726;
+}
+
+.nav li {
+    float: left;
+}
+
+.nav a {
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    background-color: #6e7777;
+}
+
+.nav a:active {
+    background-color: #6e7777;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 16px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #6e7777;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #6e7777;
+    min-width: 175px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #a2a9a9;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.name {
+    float: left;
+}
+
 .text {
     width: auto;
 }
 
-.text > p {
+.text p {
     margin-top: 0em;
 }
 
-#links:link {
+.links:link {
     color: #008000;
 }
-        
-#links:visited {
+
+.links:visited {
     color: #008000;
 }
-        
-#links:hover {
+
+.links:hover {
     color: #206020;
 }
-        
-#links:active {
+
+.links:active {
     color: #206020;
 }
-        
+
 
 /* ==========================================================================
    Helper classes

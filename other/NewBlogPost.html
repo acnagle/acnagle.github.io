@@ -9,21 +9,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="manifest" href="site.webmanifest">
-    <link rel="apple-touch-icon" href="/img/icon.png">
+    <link rel="apple-touch-icon" href="../img/icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2b5797">
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="mask-icon" href="../safari-pinned-tab.svg" color="#2b5797">
     <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="msapplication-TileImage" content="img//mstile-144x144.png">
+    <meta name="msapplication-TileImage" content="..//img//mstile-144x144.png">
     <meta name="theme-color" content="#ffffff">
     
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
     <style>
+        h1 {
+            text-align: center;
+            padding: 0px 25px 0px 25px;
+        }
+        
         .blog-text {
             width: 80%;
             margin: auto;
@@ -48,17 +53,24 @@
 
     <!-- Add your site or application content here -->
     <div style="padding-top: 35px; padding-bottom: 35px;">
-        <div id="main-window" style="padding-bottom: 25px;">
+        <div class="main-window" style="padding-bottom: 25px;">
             <div style="padding-bottom: 25px;">
-                <ul id="nav-bar">
-                    <li id="nav-li"><a href="contact.html" id="nav-a">contact me 📫</a></li>
-                    <li id="nav-li"><a href="AlliotNagleCV.pdf" id="nav-a">cv 📄</a></li>
-                    <li id="nav-li"><a href="blog.html" id="nav-a">Conv(X) blog 📝</a></li>
-                    <li id="nav-li"><a href="index.html" id="nav-a">home 🏡</a></li>
+                <ul class="nav">
+                    <li><a href="index.html">home 🏡</a></li>
+                    <li><a href="blog.html">Conv(X) blog 📝</a></li>
+                    <li class="dropdown">
+                        <button class="dropbtn">coursework 📚</button>
+                        <div class="dropdown-content">
+                            <a href="../cs760.html">CS 760</a>
+                            <a href="../ece401.html">ECE 401</a>
+                        </div>
+                    </li>
+                    <li><a href="AlliotNagleCV.pdf">cv 📄</a></li>
+                    <li><a href="contact.html">contact me 📫</a></li>
                 </ul>
             </div>
             <div>
-                <h1 style="text-align: center;">[Title of Post]</h1>
+                <h1>[Title of Post]</h1>
             </div>
             <div class="blog-text">
                 <p>This is where the writing for the post goes!</p>
