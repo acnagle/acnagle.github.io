@@ -1,3 +1,7 @@
+/* ==========================================================================
+   CSS for Blog Posts
+   ========================================================================== */
+
 h1 {
     text-align: center;
     padding: 0px 25px 0px 25px;
@@ -9,11 +13,48 @@ h1 {
 }
 
 .blog-text p {
-/*            text-indent: 3em;*/
+/*    text-indent: 3em;*/
     float: left;
     padding: 0px 25px 0px 25px;
 }
 
 .blog-text p:first-of-type {
     padding-top: 25px;
+}
+
+/* ==========================================================================
+   CSS for Conv(X) Blog Webpage
+   ========================================================================== */
+
+.blog-link:link, .blog-link:visited, .blog-link:hover, .blog-link:active {
+    color: #000000;
+}
+
+.post {
+    margin: auto;
+    color: #000000;
+    width: 75%;
+    background-color: #e6e6e6;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: medium;
+    border-color: #000000;
+    border-top: none;
+    border-left: none;
+    padding: 25px;
+    position: relative;
+    display: block;
+    overflow: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/*
+.post:not(:last-child) {
+    margin-bottom: 5px;
+}
+*/
+
+.post-info {
+    float: right;
 }

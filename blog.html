@@ -23,33 +23,7 @@
     
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    
-    <style>
-        .post {
-            margin: auto;
-            color: #000000;
-            width: 75%;
-            background-color: #e6e6e6;
-            border-radius: 25px;
-            border-style: solid;
-            border-width: medium;
-            border-color: #000000;
-            padding: 25px;
-            position: relative;
-            display: block;
-            overflow: auto;
-            max-width: 100%;
-            max-height: 100%;
-        }
-        
-        .post:not(:last-child) {
-            margin-bottom: 5px;
-        }
-        
-        .post-info {
-            float: right;
-        }
-    </style>
+    <link rel="stylesheet" href="css/blog.css">
 </head>
 
 <body>
@@ -75,14 +49,18 @@
                     <li><a href="contact.html">contact me 📫</a></li>
                 </ul>
             </div>
-            <div class="post">
-                <a href="./posts/blog_welcome_1.html" title="Welcome to the Conv(X) blog!" target="_self" class="links">Welcome to the Conv(X) blog!</a>
-                <span class="post-info"><i>12/22/2018 @ 10:54 PM CST</i></span>
-            </div>
-            <div class="post">
-                <a href="./posts/intro_to_information_theory_2.pdf" title="An Introduction to Information Theory" target="_self" class="links">An Introduction to Information Theory</a>
-                <span class="post-info"><i>01/17/2019 @ 5:02 PM CST</i></span>
-            </div>
+            <a href="./posts/blog_welcome_1.html" title="Welcome to the Conv(X) blog!" target="_self" class="blog-link">
+                <div class="post">
+                    Welcome to the Conv(X) blog!
+                    <span class="post-info"><i>12/22/2018 @ 10:54 PM CST</i></span>
+                </div>
+            </a>
+            <a href="./posts/intro_to_information_theory_2.pdf" title="An Introduction to Information Theory" target="_self" class="blog-link">
+                <div class="post">
+                    An Introduction to Information Theory
+                    <span class="post-info"><i>01/17/2019 @ 5:02 PM CST</i></span>
+                </div>
+            </a>
         </div>
     </div>
     <script src="js/vendor/modernizr-3.6.0.min.js"></script>
