@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png">
     <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../img/safari-pinned-tab.svg" color="#2b5797">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#2b5797">
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-TileImage" content="../../img/mstile-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -24,6 +24,16 @@
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/blog.css">
+    
+    <style>
+        .pic {
+            max-width: 100%;
+            max-height: 100%;
+            padding: 5px 0px 15px 0px;
+            width: 275px;
+            height: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,42 +51,45 @@
                     <li class="dropdown">
                         <button class="dropbtn">Coursework 📚</button>
                         <div class="dropdown-content">
-                            <a href="../cs760/cs760.html">CS 760</a>
-                            <a href="ece401.html">ECE 401</a>
+                            <a href="../../coursework/cs760/cs760.html">CS 760</a>
+                            <a href="../../coursework/ece401/ce401.html">ECE 401</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <button class="dropbtn">Projects 📁</button>
                         <div class="dropdown-content">
-                            <a href="../../projects/algal-bloom-prediction/algal-bloom-prediction.html">Algal Bloom Prediction</a>
-                            <a href="../../projects/chess-ai/chess-ai.html">Chess AI</a>
+                            <a href="../algal-bloom-prediction/algal-bloom-prediction.html">Algal Bloom Prediction</a>
+                            <a href="./chess-ai.html">Chess AI</a>
                         </div>
                     </li>
-                    <li><a href="../../AlliotNagleCV.pdf">CV 📄</a></li>
-                    <li><a href="../../contact.html">Contact 📫</a></li>
+                    <li><a href="AlliotNagleCV.pdf">CV 📄</a></li>
+                    <li><a href="contact.html">Contact 📫</a></li>
                 </ul>
             </div>
             <div>
-                <h1>ECE 401: Electroacoustical Engineering (Spring 2019)</h1>
+                <h1>Chess AI</h1>
             </div>
-            <div class="blog-text">
-                <p>I will be enrolled in ECE 401 this coming semester! I plan to use this space to upload study guides I make, digressions on topics covered in the course, or other insightful information for studying.</p>
-            </div>
+            <p style="text-align: center;">GitHub Repository: <a class="links" title="Chess-AI" target="_blank" href="https://github.com/acnagle/Chess-AI">Chess-AI</a></p>
+            <figure style="float: right; margin: 0em 2em 2em 2em;">
+                <img class="pic" src="chess-ai.jpg" alt="Yahara Watershed">
+                <figcaption style="font-size: 9pt">GUI from my chess AI project</figcaption>
+            </figure>
+            <p class="blog-text">
+                I started this independent project as a way to teach myself about game theory and artifical intelligence, and gain a deeper understanding of algorithm design. Chess is a two-player deterministic zero-sum game of perfect information, which makes it a great way to explore applications of the minimax algorithm, alpha-beta pruning, and reinforcement learning. I plan on using this page to share some of the challenges I face while creating this AI; I would also like to use this page to share other interesting thoughts about this project as they occur to me.
+            </p>
         </div>
     </div>
     <script src="../../js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
     <script src="../../js/plugins.js"></script>
     <script src="../../js/main.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-<!--
     <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
--->
 </body>
 </html>

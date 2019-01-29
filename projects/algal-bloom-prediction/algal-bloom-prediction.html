@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon-16x16.png">
     <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../img/safari-pinned-tab.svg" color="#2b5797">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#2b5797">
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-TileImage" content="../../img/mstile-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -24,6 +24,16 @@
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/blog.css">
+    
+    <style>
+        .pic {
+            max-width: 100%;
+            max-height: 100%;
+            padding: 5px 0px 15px 0px;
+            width: 275px;
+            height: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,15 +51,15 @@
                     <li class="dropdown">
                         <button class="dropbtn">Coursework 📚</button>
                         <div class="dropdown-content">
-                            <a href="../cs760/cs760.html">CS 760</a>
-                            <a href="ece401.html">ECE 401</a>
+                            <a href="../../coursework/cs760/cs760.html">CS 760</a>
+                            <a href="../../coursework/ece401/ece401.html">ECE 401</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <button class="dropbtn">Projects 📁</button>
                         <div class="dropdown-content">
-                            <a href="../../projects/algal-bloom-prediction/algal-bloom-prediction.html">Algal Bloom Prediction</a>
-                            <a href="../../projects/chess-ai/chess-ai.html">Chess AI</a>
+                            <a href="./algal-bloom-prediction.html">Algal Bloom Prediction</a>
+                            <a href="../chess-ai/chess-ai.html">Chess AI</a>
                         </div>
                     </li>
                     <li><a href="../../AlliotNagleCV.pdf">CV 📄</a></li>
@@ -57,26 +67,29 @@
                 </ul>
             </div>
             <div>
-                <h1>ECE 401: Electroacoustical Engineering (Spring 2019)</h1>
+                <h1>Algal Bloom Prediction</h1>
             </div>
-            <div class="blog-text">
-                <p>I will be enrolled in ECE 401 this coming semester! I plan to use this space to upload study guides I make, digressions on topics covered in the course, or other insightful information for studying.</p>
-            </div>
+            <p style="text-align: center;">GitHub Repository: <a class="links" title="CLA-Project" target="_blank" href="https://github.com/acnagle/CLA-Project">CLA-Project</a></p>
+            <figure style="float: right; margin: 0em 2em 2em 2em;">
+                <img class="pic" src="yahara-watershed.jpg" alt="Yahara Watershed">
+                <figcaption style="font-size: 9pt">UW-Madison Water Sustainability and Climate Project,<br> https://wsc.limnology.wisc.edu/node/106</figcaption>
+            </figure>
+            <p class="blog-text">
+                <a class="links" title="Clean Lakes Alliance" target="_blank" href="https://en.wikipedia.org/wiki/Algal_bloom">Algal Blooms</a> pose a health threat to Madison's beachgoers and wildlife. Since the lakes of Madison are the lowest elevated points in the <a class="links" title="Yahara watershed" target="_blank" href="https://wsc.limnology.wisc.edu/about/watershed">Yahara watershed</a>, they are contaminated by the runoff from farmland and other phosphorus-containing sources. There has been plenty of research at UW-Madison to understand the behavior of these algal blooms, so this research project is one of many efforts on campus to create a model for algal blooms on Madison's lakes. Some researchers attempt to create theory-based models based on ecological data, some researchers (such as myself) attempt to create a model purely using data science, and some researchers are developing a hybrid of these two model types. This project utilizes data gathered from volunteers at the <a class="links" title="Clean Lakes Alliance" target="_blank" href="https://cleanlakesalliance.org">Clean Lakes Alliance</a> (CLA) and weather data from the Daily Summaries at NOAA's <a class="links" title="NOAA" target="_blank" href="https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USW00014837/detail">wesbite</a>. Using this data, I have been developing a predicitve model for algal blooms on the largest lakes in the Yahara watershed: Mendota, Monona, Waubesa, Kegonsa, and Wingra. I have tried various machine learning models for this project in an effort to select the best one for making predicitions. Such models have included least squares classification, kernel SVMs (including linear, sigmoid, RBF, and polynomial), k-nearest neighbors, and, more recently, neural networks.
+            </p>
         </div>
     </div>
     <script src="../../js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
     <script src="../../js/plugins.js"></script>
     <script src="../../js/main.js"></script>
 
     <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-<!--
     <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
--->
 </body>
 </html>
