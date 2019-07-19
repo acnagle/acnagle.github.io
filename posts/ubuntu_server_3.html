@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Alliot Nagle</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="../img/icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="mask-icon" href="../img/safari-pinned-tab.svg" color="#2b5797">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-TileImage" content="../img/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div style="padding-top: 35px; padding-bottom: 35px;">
+        <div class="main-window" style="padding-bottom: 25px;">
+            <div style="padding-bottom: 25px;">
+                <ul class="nav">
+                    <li><a href="../index.html">Home 🏡</a></li>
+                    <li><a href="../blog.html">Conv(X) Blog 📝</a></li>
+                    <li class="dropdown">
+                        <button class="dropbtn">Projects 📁</button>
+                        <div class="dropdown-content">
+                            <a href="../projects/algal-bloom-prediction/algal-bloom-prediction.html">Algal Bloom Prediction</a>
+                        </div>
+                    </li>
+                    <li><a href="../AlliotNagleCV.pdf">CV 📄</a></li>
+                    <li class="dropdown">
+                        <button class="dropbtn">Miscellaneous 📚</button>
+                        <div class="dropdown-content">
+                            <a href="../miscellaneous/probability_reference_1.pdf">Probability Reference</a>
+                            <a href="../miscellaneous/jazz_2.html">Jazz Listening</a>
+                        </div>
+                    </li>
+                    <li><a href="../contact.html">Contact 📫</a></li>
+                </ul>
+            </div>
+            <div>
+                <h1>How to Setup an SSH Server with Ubuntu 18.04</h1>
+            </div>
+            <div class="blog-text">
+                <p>I'll be starting grad school this coming fall with a focus in machine learning, and an important component of doing work in this field is having the hardware neccessary to run models such as deep neural networks. While UW-Madison has a few resources such as the <a class="links" title="Euler" target="_blank" href="http://wacc.wisc.edu/infrastructure/">Euler GPU cluster</a>, or companies offer services such as Amazon's <a class="links" title="Amazon AWS" target="_blank" href="https://aws.amazon.com/">AWS</a>, I was interested in owning my own hardware that I can dedicate to my personal projects and other work. Beyond that, I wanted to start learning about Linux and computer customization and hardware. Initially, I wanted to have a desktop computer in my apartment where I could run all my models, but of course what makes a GPU cluster or AWS so great is that I can run my models from any location directly from my laptop.</p>
+                
+                <p>As a disclaimer, it's important to keep in mind the OS compatability between the remote computer you send code from and your server. For example, my laptop is running macOS and my server runs Ubuntu Server 18.04. Both are Unix-based and, although the kernels aren't the same (which is why you can't run macOS applications on Linux and vice versa), both follow the Unix standard. This means that code I write and debug on my MacBook will run on the Ubuntu Server. If I were to write and debug code on a Windows computer and send it to my Ubuntu server, I'd first have to make changes to the source files to make it compatible with Linux (for example, changing directory names from something like C:\I\Dont\Like\Windows\ to /I/Dont/Like/Windows/). Futhermore, SSH runs natively in macOS and Linux; Windows requires an SSH client such as <a class="links" title="PuTTY" target="_blank" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>.</p>
+                
+                <p>I aim to be verbose and define many things because I assume the reader has little knowledge in this area (like I did when I started this project).................... Be sure to write everything you want here blah blah blah</p>
+                
+                <h2>Step 0: Decide on the purpose of your server</h2>
+                
+                <p>There are many types of servers you could setup: MySQL server, SSH server,  web server (although your ISP may not be happy about it; check with them first!), FTP server, proxy server, home media server, etc. As the title of this post suggests, this tutorial focuses on setting up an SSH server. I recommend doing your research beforehand to ensure that you have a server that adequately suits your needs. Additionally, be sure to consider your hardware options so that your server can handle the tasks that you assign it. Since I plan on running deep learning models, I'll need to invest in a CUDA-enabled NVIDIA GPU with 6GB of memory as an absolute lower limit. A GPU with 6GB of memory would likely have difficulties training ResNet, computer vision, and NLP models. Having at least 16 GB of memory should run OK for models without using the GPU, but I plan on getting 32 GB. For a CPU, Intel Xeon is a popular choice for servers since they can have more cores, a larger L3 cache, and support more memory. I found that <a class="links" title="i7 vs Xeon" target="_blank" href="https://www.velocitymicro.com/blog/xeon-vs-i7i5-whats-difference/">this post</a> does a thorough and succint comparision between the Intel Xeon and Intel Core i7 processors.</p>
+                
+                <p>Assuming that you want your own SSH server, let's get started!</p>
+                
+                <h2>Step 1: Prepare a bootable USB</h2>
+                
+                <p>For this step, you'll need a flash drive with at least 2 GB of space and a computer with an internet connection that you have permission to install software to. Visit the <a class="links" title="Ubuntu Downloads" target="_blank" href="https://ubuntu.com/download">Ubuntu downloads</a> page and download Ubuntu Server 18.04 LTS. As an aside, the file that you download is an ISO image, which is simply an archive file that could be written to an optical disc such as a CD or DVD. ISO 9660 is a standard for file systems that are used with optical discs, hence the name <i>ISO</i>. However, these ISO images have been developed over time so that they can be "burned" to USB drives, so the term <i>ISO</i> is used more for convention.</p>
+                
+                <p>To burn the ISO to the USB drive, you'll need to download <a class="links" title="Etcher" target="_blank" href="https://www.balena.io/etcher/">Etcher</a> (if you're on Windows, be sure to download the "Installer" version rather than the "Portable" version) and install it. Plug in your USB drive to your computer and launch Etcher. Etcher is extremely simple to use; all you need to do tell Etcher where the ISO file is on your computer and which drive to burn the image to. <b><i>Please be aware that burning the ISO to your USB drive will delete everything on the USB drive, so be sure to back up your data! Take time to ensure that you select the correct drive to burn the ISO image to. You may accidently burn the ISO to the wrong USB drive if you have another one plugged into your computer!</i></b></p>
+                
+                
+                <p>If you used macOS to create the bootable USB drive, you may get a popup dialogue with the following warning once the ISO has been written to your USB: "The disk you insrted was not readable by this computer." <b>Do not click "Initialize."</b> Instead, click "Eject" and remove the USB drive.</p>
+                
+                <h2>Step 2: Install Ubuntu Server</h2>
+                
+                <p>Plug the USB drive you created in Step 1 into the computer you want to install Ubuntu Server on. If your computer has no OS installed, the computer will automatically detect the USB drive and will begin the setup process. Otherwise, you will need to access the boot menu on  your computer by pressing ESC, F1, F2, F8, F10, or F12 on startup depending on the computer's manufacturer. For the computers that I installed Ubuntu Server on, a menu appeared and presented me with a list of options, including "System Setup" and "Boot from USB." If you aren't given the option to simply boot from your USB drive, there will be an option to enter BIOS. In BIOS, you can go to the "Boot" tab and choose to boot from your USB drive. Once booting from your USB drive begins, ensure that your computer is connected to the internet via ethernet and then follow the on-screen instructions for installing Ubuntu</p>
+                
+                <p>On Step 3 of the Ubuntu installation, you'll have three options on how you want to configure Ubuntu on your computer. For this tutorial, choose "Install Ubuntu." The other two options allow you to configure your computer for <a class="links" title="MAAS" target="_blank" href="https://maas.io/">MAAS</a> (Metal As A Service). Essentially, MAAS allows the user to manage a pool of computers from which instances can be launched in the same way instances can be launched on Amazon AWS. Like Ubuntu itself, it's a completely free service, but you must provide your own hardware to run the instances on. <a class="links" title="MAAS Video" target="_blank" href="https://www.youtube.com/watch?v=J1XH0SQARgo">This video</a> provides a brief overview of MAAS if you're interested in learning more.</p>
+                
+                <p>Next, the network connections must be configured. Here, I'll specify how the configuration should look and provide explanations in the next paragraph if you're unsure of the meaning of some of this the same way I was. Since this is a server, you'll want to set it up with a static IP adress. Select the interface you want to configure from the menu and then select "Edit IPv4" and change the configuration from "Automatic (DHCP)" to "Manual." For this example, let's assume that your router's IP address is 192.168.1.1, which is the often the default IP address of routers manufacturers provide. The subnet should be configured to 192.168.1.0/24. For the address of the server, you'll need to choose an IP address on the network that isn't currently preoccupied by other devices on the network. To find an available IP address, open Terminal on a Linux or Mac computer (or Command Prompt in Windows) and type <i>arp -a</i>. I recommend choosing an address between 192.168.1.2 through 192.168.1.254, but be sure to choose an IP address that isn't listed from the <i>arp -a</i> command.</p>
+                
+                <p>Enter the IP address of the router in the "Gateway" field (192.168.1.1 in our case). The name servers can be set up to use the Google Public DNS: enter <i>8.8.8.8, 8.8.4.4</i> into this field. The search domain can be left empty if you don't have a domain set up.</p>
+                
+                <p>If you're networking is a newer topic for you, I'll breifly explain the things we just used to set up the network connections so that you have a better understaind of how your Linx machine connects to the internet. An IP address is a unqiue identf</p>
+                
+                <h2>Step 3: Update and install packages</h2>
+                                
+                <p><b>Must be connected via ethernet! also discuss how to setup wifi</b></p>
+                
+                <h2>Step 4: Remove unwanted partitions</h2>
+                
+                <h2>Step 5: Setup SSH</h2>
+                
+                <h2>Step 6: Port forwarding</h2>
+                
+                <h2>In case you were interested...</h2>
+                
+                <h2>Conclusion</h2>
+            </div>
+        </div>
+    </div>
+    <script src="../js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<!--
+    <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+-->
+</body>
+</html>
