@@ -90,17 +90,29 @@
                 
                 <p>Enter the IP address of the router in the "Gateway" field (192.168.1.1 in our case). The name servers can be set up to use the Google Public DNS: enter <i>8.8.8.8, 8.8.4.4</i> into this field. The search domain can be left empty if you don't have a domain set up.</p>
                 
-                <p>If you're networking is a newer topic for you, I'll breifly explain the things we just used to set up the network connections so that you have a better understaind of how your Linx machine connects to the internet. An IP address is a unqiue identf</p>
+                <p>If you're networking is a newer topic for you, I'll breifly explain the things we just used to set up the network connections so that you have a better understaind of how your Linux machine connects to the internet. An IP address is a unqiue identifier for a device connected to a network, and the IP address for a device is closely related to the router's IP address on a home network. For a given router IP address of 192.168.1.1, a device on the network can have an IP address in the range 192.168.0.0 through 192.168.255.255....FINISH THIS AND BE BRIEF!!</p>
+                
+                <p>Steps 5 and 6 can be skipped over since you won't need a proxy address and you likely aren't planning on using a diifferent <a class="links" title="Ubuntu Mirror" target="_blank" href="https://people.canonical.com/~cjwatson/mirror/list.html">Ubuntu mirror</a>. For Step 7, I used the entire disk space since I wanted the computer to only function as a server, but you're free to choose "Manual" and reserve space for a dual-boot configuration. Be aware that these actions will delete everything from your hard drives.</p>
+                
+                <p>After configuring the hard drives, enter your login credentials. For a name, I suggest "admin," "local admin," or something along those lines. Unless you already have a server name in mind, I recommend choosing a meaningful name about the system you're setting up. For example, I named my server "prec-t7500," which is short for the computer that I used for this project, a Dell Precision T7500. Proceed with filling out the rest of your credentials.</p>
+                
+                <p>On the next prompt, choose to install OpenSSH. If you choose not to install it now, you can always install it later using <i>sudo apt install openssh-server</i>. You're also given the option to import ssh identities from services such as GitHub. I chose to skip any importing for now, since this could easily be setup later. On the next prompt, you're giving the option to install server snaps, which are essentially software packages for added functionality to your server. None are required, and I didn't think any were necessary, so I didn't install any. If I change my mind later, I can always install them. Select <i>Done</i> and the installation will complete and then you can reboot your server and login with the credentials you provided during installation.</p>
                 
                 <h2>Step 3: Update and install packages</h2>
-                                
-                <p><b>Must be connected via ethernet! also discuss how to setup wifi</b></p>
                 
-                <h2>Step 4: Remove unwanted partitions</h2>
+                <p>The very first commands you should run are <i>sudo apt-get update</i> followed by <i>sudo apt-get upgrade</i>. The first command will update the list of available versions for all your packages, and the second command will upgrade your packages to those versions. If you're unfamiliar with bash commands, you can type <i>command --help</i> to get a brief overview of a command and it's associated flags, or <i>man command</i> if you want to refer to the <i>man</i>ual, which will provide greater detail. Take this time to install any drivers or packages you know you will need. Since I want my server to run my machine learning models, I installed <a class="links" title="Anaconda Distribution" target="_blank" href="https://www.anaconda.com/distribution/">Anaconda Distribution</a> followed by additional Python packages I needed, such as PyTorch.</p>
+                
+                <p>Run <i>sudo apt install ufw</i>. ufw is short for "uncomplicated firewall," and is the default firewall package for Ubuntu. Next, run <i>sudo ufw enable</i> to enable to firewall. In Step 6: Port forwarding, I'll explain how to use ufw to only allow certain ports or IP addresses to communicate with your server. Having a firewall is crucial for having a secure server that only you can have access to.</p>
                 
                 <h2>Step 5: Setup SSH</h2>
                 
+                <p>Run <i>ssh</i> to ensure that OpenSSH is installed. If you need to install it, run <i>sudo apt install openssh-server</i>. Type <i>sudo service ssh start</i> to start the SSH service. You can check on the status of the ssh service at anytime by running <i>sudo service ssh status</i>, and then pressing <i>q</i> to quit.</p>
+                
+                <p>Next, run <i>ssh localhost</i>. <i>localhost</i> is an alias for the loopback address on a network. In other words, running <i>ssh localhost</i> will allow you to ssh into the computer you're currently working at. You will be prompted to enter your login credentials. This will ensure that you can successfully ssh into your server! To take this one step further, you can now ssh into server from any computer on the network! If you have a macOS or Linux computer nearby, open the terminal and run <i>ssh USERNAME@SERVER-IP-ADDRESS</i>. For example, let's assume the IP address for my server is 192.168.1.20, I would run <i>ssh acnagle@192.168.1.20</i>.</p>
+                
                 <h2>Step 6: Port forwarding</h2>
+                
+                <p><b>change default port for ssh. use ufw to allow certain ports or IP addresses.</b></p>
                 
                 <h2>In case you were interested...</h2>
                 
