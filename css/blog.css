@@ -4,16 +4,21 @@
 
 h1 {
     text-align: center;
-    padding: 0px 25px 0px 25px;
+/*    padding: 0px 25px 0px 25px;*/
+}
+
+.date {
+    text-align: center;
 }
 
 h2 {
-    float: left;
-    padding: 0px 25px 0px 35px;
-    width: 90%;
+/*    float: left;*/
+/*    padding: 0px 25px 0px 35px;*/
+/*    width: 90%;*/
 /*    clear: both;*/
+    padding-top: 25px;
 }
-        
+
 .blog-text {
     width: 90%;
     margin: auto;
@@ -21,12 +26,21 @@ h2 {
 
 .blog-text p {
 /*    text-indent: 3em;*/
-    float: left;
-    padding: 0px 25px 0px 25px;
+/*    float: left;*/
+    padding: 5px 0px 5px 0px;
+/*    padding-top: 40px;*/
 }
 
 .blog-text p:first-of-type {
     padding-top: 25px;
+}
+
+.code-snip {
+    width: 100%;
+    padding: 10px 0px 10px 10px;
+    border-radius: 10px;
+    background-color: #262726;
+    color: #ffffff;
 }
 
 /* ==========================================================================
