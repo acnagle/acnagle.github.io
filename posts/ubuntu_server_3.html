@@ -24,18 +24,6 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/blog.css">
-    
-    <style>
-        .code-div {
-/*            padding: 0px 0px 40px 0px;*/
-/*            overflow: auto;*/
-/*            width: 100%;*/
-            
-            
-        }
-    
-    </style>
-    
 </head>
 
 <body>
@@ -90,7 +78,6 @@
                 
                 <p>To burn the ISO to the USB drive, you'll need to download <a class="links" title="Etcher" target="_blank" href="https://www.balena.io/etcher/">Etcher</a> (if you're on Windows, be sure to download the "Installer" version rather than the "Portable" version) and install it. Plug in your USB drive to your computer and launch Etcher. Etcher is extremely simple to use; all you need to do tell Etcher where the ISO file is on your computer and which drive to burn the image to. <b><i>Please be aware that burning the ISO to your USB drive will delete everything on the USB drive, so be sure to back up your data. Additionally, take the time to ensure that you select the correct drive to burn the ISO image to. You may accidently burn the ISO to the wrong USB drive if you have another one plugged into your computer.</i></b></p>
                 
-                
                 <p>If you used macOS to create the bootable USB drive, you may get a popup dialogue with the following warning once the ISO has been written to your USB: "The disk you insrted was not readable by this computer." <b>Do not click "Initialize."</b> Instead, click "Eject" and remove the USB drive.</p>
                 
                 <h2>Step 2: Install Ubuntu Server</h2>
@@ -105,27 +92,27 @@
                         <p>After configuring your keyboard, you'll have three options on how you want to configure Ubuntu on your computer. For this tutorial, choose "Install Ubuntu." The other two options allow you to configure your computer for <a class="links" title="MAAS" target="_blank" href="https://maas.io/">MAAS</a> (Metal As A Service). Essentially, MAAS allows the user to manage a pool of computers from which instances can be launched in the same way instances can be launched on Amazon AWS. Like Ubuntu itself, it's completely free, but you must provide your own hardware to run the instances on. <a class="links" title="MAAS video" target="_blank" href="https://www.youtube.com/watch?v=J1XH0SQARgo">This video</a> provides a brief overview of MAAS if you're interested in learning more. Although this tutorial does not explain how to install MAAS, it is good to know about since it might make for another interesting project in the future.</p>
                     </li>
                     <li>
-                        <p>Next, the network connections must be configured. First, I'll specify how the configuration should look and then provide explanations in the following paragraphs if you're unsure of anything. Since this is a server, you'll want to set it up with a static private IP adress. Select the interface you want to configure from the menu and then select "Edit IPv4" and change the configuration from "Automatic (DHCP)" to "Manual." For this tutorial, let's assume that your router's IP address is 192.168.1.1, which is the often the default IP address of routers manufacturers provide. The subnet should be configured to 192.168.1.0/24. For the address of the server, you'll need to choose an IP address on the network that isn't currently preoccupied by other devices on the network. To find an available IP address, open Terminal on a Linux or Mac computer (or Command Prompt in Windows) and run</p> 
+                        <p>Next, the network connections must be configured. First, I'll specify how the configuration should look and then provide explanations in the following paragraphs if you're unsure of anything. Since this is a server, you'll want to set it up with a static private IP address. Select the interface you want to configure from the menu and then select "Edit IPv4" and change the configuration from "Automatic (DHCP)" to "Manual." For this tutorial, let's assume that your router's IP address is 192.168.1.1, which is the often the default IP address of routers manufacturers provide. The subnet should be configured to 192.168.1.0/24. For the address of the server, you'll need to choose an IP address on the network that isn't currently preoccupied by other devices on the network. To find an available IP address, open Terminal on a Linux or Mac computer (or Command Prompt in Windows) and run</p> 
 
-                        <div class="code-snip"><code>arp -a</code></div>
+                        <code class="code-snip">arp -a</code>
 
                         <p>You're free to choose any IP addresses that aren't listed in the output, but I recommend choosing an address between 192.168.1.2 through 192.168.1.254.</p>
 
                         <p>Enter the IP address of the router in the "Gateway" field (192.168.1.1 for this tutorial). The name servers can be set up to use the Google Public DNS: enter <i>8.8.8.8, 8.8.4.4</i> into this field. The search domain can be left empty if you don't have a domain set up.</p>
 
-                        <p>If computer networking is a newer topic for you, I'll breifly explain the terminology I just used to set up the network connections. My goal is that you will have a better understanding of how your Linux machine connects to the internet. Computers and servers have two IP addresses: one is private and the other is public. A private IP address is a unqiue identifier for a device connected to a private network, and the private IP address for a device is closely related to the router's IP address on a home network. A public IP address is unique as well, but it's different than a private IP address because a device's public IP address can be used to access it from any network. For the purposes of installing Ubuntu, this configuration page is asking for a private IP address. Although you won't be using a public IP address here, it will become necessary to use in Step 5: Port forwarding.</p>
+                        <p>If computer networking is a newer topic for you, I'll breifly explain the terminology I just used to set up the network connections. My goal is that you will have a better understanding of how your Linux machine connects to the internet. Any device connected to the internet has two IP addresses: one is private and the other is public. A private IP address is a unqiue identifier for a device connected to a private network and is closely related to the router's IP address on a home network. A public IP address is unique as well, but it's different than a private IP address since a device's public IP address can be used to access the device from any network. For the purposes of installing Ubuntu, this configuration page is asking for a private IP address. Although you won't be using a public IP address here, it will become necessary to use in Step 5: Port forwarding.</p>
                         
-                        <p>For a given router IP address of 192.168.1.1, a device on the network can have a private IP address in the range 192.168.0.0 through 192.168.255.255. In most households, a private IP address is assigned to a device automatically when it connects router. In this case, the router acts as a DHCP (Dynamic Host Configuration Protocol) server. This isn't a problem for most devices, but it should be avoided for a server like the one you're setting up. Basically, a server will receive many incoming and outgoing requests, and the benefit of using a static IP address (a IP address that never changes) is that it allows you to avoid the hassle of updating the IP address you are port forwarding to everytime your server requests a new IP address. Port forwarding is not defined here; instead, it's relevance is shown in Step 5: Port forwarding.</p>
+                        <p>For a given router IP address of 192.168.1.1, a device on the network can have a private IP address in the range 192.168.0.0 through 192.168.255.255. In most households, a private IP address is assigned to a device automatically when it connects router. In this case, the router acts as a DHCP (Dynamic Host Configuration Protocol) server. This isn't a problem for most devices, but it should be avoided for a server like the one you're setting up. Basically, a server will receive many incoming and outgoing requests, and the benefit of using a static IP address (an IP address that never changes) is that it allows you to avoid the hassle of updating the IP address you are port forwarding to everytime your server requests a new IP address. Port forwarding is not defined here; instead, it's relevance is shown in Step 5: Port forwarding.</p>
 
                         <p>You have set up your server using the IPv4 rather than IPv6; to elaborate on the differences of these two is out of the scope of this post, but in a nutshell IPv4 and IPv6 are two different protocols for how connections are established between devices (<a class="links" title="IPv4 vs IPv6" target="_blank" href="https://hosting.review/tips-tools/ipv4-vs-ipv6/">here</a> is an interesting read that details their differences). The first thing we specified for the network configuration was the subnet in CIDR notation. This notation is unique to IPv4, and it allows a network to reuse the same private IP address. <a class="links" title="Subnet masks" target="_blank" href="https://www.youtube.com/watch?v=XQ3T14SIlV4">This</a> video gives a great explanation of how subnet masking works and provides plenty of examples if you'd like to know more.</p>
 
-                        <p>The last thing to note from the network configuration step are name servers. Name servers are the part of a DNS (Domain Name System) server that allows a domain name (such as acnagle.com) to be used instead of an IP address to access a host. By setting 8.8.8.8 and 8.8.4.4 as your name servers, you're using <a class="links" title="Google Public DNS" target="_blank" href="https://www.youtube.com/watch?v=XQ3T14SIlV4">Google Public DNS</a> to do that lookup. This will allow you to run</p>
+                        <p>The last thing to note from the network configuration step are name servers. Name servers are the part of a DNS (Domain Name System) server that allows a domain name (such as acnagle.com) to be used instead of an IP address to access a host. By setting 8.8.8.8 and 8.8.4.4 as your name servers, you're using <a class="links" title="Google Public DNS" target="_blank" href="https://developers.google.com/speed/public-dns/">Google Public DNS</a> to do that lookup. This will allow you to run</p>
 
-                        <div class="blog-text code-snip"><code>ping -c3 8.8.8.8</code></div>
+                        <code class="code-snip">ping -c3 8.8.8.8</code>
 
                         <p>and</p>
 
-                        <div class="blog-text code-snip"><code>ping -c3 www.google.com</code></div>
+                        <code class="code-snip">ping -c3 www.google.com</code>
 
                         <p>when the Ubuntu Server installation is complete and achieve the same outputs. ISPs provide access to a DNS server for their customers, and you could use that instead of the Google Public DNS if you'd like.</p>
                     </li>
@@ -147,29 +134,29 @@
                 
                 <p>The very first commands you should run are</p>
                 
-                <div class="blog-text code-snip"><code>sudo apt-get update</code></div>
+                <code class="code-snip">sudo apt-get update</code>
                 
                 <p>followed by</p>
                 
-                <div class="blog-text code-snip"><code>sudo apt-get upgrade</code></div>
+                <code class="code-snip">sudo apt-get upgrade</code>
                 
                 <p>The first command will update the list of available versions for all your packages, and the second command will upgrade your packages to those versions. If you're unfamiliar with bash commands, you can type</p> 
                 
-                <div class="blog-text code-snip"><code>command --help</code></div>
+                <code class="code-snip">command --help</code>
                 
                 <p>to get a brief overview of a command and it's associated flags, or</p> 
                 
-                <div class="blog-text code-snip"><code>man command</code></div>
+                <code class="code-snip">man command</code>
                 
                 <p>if you want to refer to the <i>man</i>ual, which will provide greater detail. Take this time to install any drivers or packages you know you will need. Since I want my server to run my machine learning models, I installed <a class="links" title="Anaconda Distribution" target="_blank" href="https://www.anaconda.com/distribution/">Anaconda Distribution</a> followed by additional Python packages I needed, such as PyTorch.</p>
                 
                 <p>Run</p> 
                 
-                <div class="blog-text code-snip"><code>sudo apt install ufw</code></div>
+                <code class="code-snip">sudo apt install ufw</code>
                 
                 <p>ufw is short for "<a class="links" title="ufw" target="_blank" href="https://wiki.ubuntu.com/UncomplicatedFirewall?action=show&redirect=UbuntuFirewall">uncomplicated firewall</a>," and is the default firewall package for Ubuntu. Next, run</p> 
                 
-                <div class="blog-text code-snip"><code>sudo ufw enable</code></div>
+                <code class="code-snip">sudo ufw enable</code>
                 
                 <p>to enable the firewall. In Step 5: Port forwarding, I'll explain how to use ufw to only allow certain ports or IP addresses to communicate with your server. Having a firewall is crucial for having a secure server that only you have access to.</p>
                 
@@ -177,43 +164,43 @@
                 
                 <p>To ensure that OpenSSH is installed, run</p>
                 
-                <div class="blog-text code-snip"><code>ssh</code></div>
+                <code class="code-snip">ssh</code>
                 
                 <p>If you need to install it, run </p>
                 
-                <div class="blog-text code-snip"><code>sudo apt install openssh-server</code></div>
+                <code class="code-snip">sudo apt install openssh-server</code>
                 
                 <p>To start the OpenSSH service, run</p> 
                 
-                <div class="blog-text code-snip"><code>sudo service ssh start</code></div>
+                <code class="code-snip">sudo service ssh start</code>
                 
                 <p>Lastly, you can check on the status of the SSH service at anytime by running</p>
                 
-                <div class="blog-text code-snip"><code>sudo service ssh status</code></div>
+                <code class="code-snip">sudo service ssh status</code>
                 
                 <p>and then pressing <i>q</i> to quit.</p>
                 
                 <p>You can check to make sure the SSH service is working as expected by accessing your server. Run the following command:</p>
                 
-                <div class="blog-text code-snip"><code>ssh localhost</code></div>
+                <code class="code-snip">ssh localhost</code>
                 
                 <p><i>localhost</i> is an alias for the loopback address on a network. In other words, running <i>ssh localhost</i> will allow you to SSH into the computer you're currently working at. You will be prompted to enter your login credentials. This will ensure that you can successfully SSH into your server. If you successfully logged in, you can take this one step further by SSHing into server from any computer on the network. If you have a macOS or Linux computer nearby, open the terminal and run </p>
                 
-                <div class="blog-text code-snip"><code>ssh username@server-private-ip</code></div>
+                <code class="code-snip">ssh username@server-private-ip</code>
                 
                 <p>For this tutorial, let's assume your username is "admin" and the private IP address for your server is 192.168.1.5. You would run</p>
                 
-                <div class="blog-text code-snip"><code>ssh admin@192.168.1.5</code></div>
+                <code class="code-snip">ssh admin@192.168.1.5</code>
                 
                 <p>Run</p>
                 
-                <div class="blog-text code-snip"><code>exit</code></div>
+                <code class="code-snip">exit</code>
                 
                 <p>to terminate the SSH connection.</p>
                 
                 <p>If you want to copy files from your remote computer to the server, you can do so using <i>scp</i>:</p>
                 
-                <div class="blog-text code-snip"><code>scp /path/to/file1 /path/to/file2 admin@192.168.1.5:/home/admin/</code></div>
+                <code class="code-snip">scp /path/to/file1 /path/to/file2 admin@192.168.1.5:/home/admin/</code>
                 
                 <p>This command will take file1 and file2 from the machine you're currently working on and copy them to the <i>/home/admin/</i> directory on your server.</p>
                                 
@@ -223,7 +210,7 @@
                 
                 <p>Different ports handle different tasks. For example, port 80 is the default for HTTP traffic and port 22 is the default for SSH. In Step 3: Update and install packages, we enabled the firewall by using <i>ufw</i>. Since the only request you want coming in to your server is an SSH request, all other requests should be blocked by the firewall. This can be achieved with the following command:</p>
                 
-                <div class="blog-text code-snip"><code>sudo ufw allow 22/tcp</code></div>
+                <code class="code-snip">sudo ufw allow 22/tcp</code>
                 
                 <p>In case you were wondering, TCP (Transmission Control Protocol) is simply a standard for data tranmission for a network. It's worthwhile to spend some time to learn about the features of ufw, since that's your main protection from malicious activity on your server. For example, instead of specifying a port number, you could specify a single IP address (or a range of IP addresses) to allow an SSH request from a particular device (or range of devices). You could also block specific IP address from accessing your server. The security doesn't stop here however. Depending on how secure you want your server to be, you could set up your server so that only computers that have an SSH key pair can have access.</p>
                 
@@ -234,29 +221,29 @@
                     <li>
                         <p>Since there are a limited number of unique public IP addresses available to assign to the devices connected to the internet, public IP addresses are subject to change. While we could just use the public IP address anyway, it is not a feasible long term solution since the public IP address will keep changing (see option 3). One way to work around this problem is to ask your ISP for a static IP address. This will come at a monthly fee, but you will have peace of mind knowing that your public IP address will never change. Once you have your assigned static public IP address, run this command to get the address:</p>
                     
-                        <div class="blog-text code-snip"><code>dig +short myip.opendns.com @resolver1.opendns.com</code></div>
+                        <code class="code-snip">dig +short myip.opendns.com @resolver1.opendns.com</code>
                     
                         <p>Next, try to SSH to your server from a different network.</p>
 
-                        <div class="blog-text code-snip"><code>ssh username@server-static-public-ip</code></div>
+                        <code class="code-snip">ssh username@server-static-public-ip</code>
                     </li>
                     <li>
                         <p>Your second option (this is the option I chose) is to use a DDNS service like <a class="links" title="Dynu DDNS service" target="_blank" href="https://www.dynu.com/">www.dynu.com</a> or some other popular DDNS service. Many DDNS allows you to use a domain name, such as acnagle.com, instead of the public IP address to connect to your server. With this option, you will choose a custom domain name, and the DDNS will periodically check your router for your server's public IP address. This configuration will require you to access the administrator's page for you router to set up DDNS with your server. Setting up your router with DDNS is fairly similar across router manufacturers: locate the DDNS page and specify the DDNS server (i.e. dynu, no-ip, or some other DDNS provider), the hostname (domain name), and your DDNS username and password.</p>
                         
                         <p>Once you have your DDNS settings adjusted for your router, try SSHing to your server from a different network in the following way:</p>
                         
-                        <div class="blog-text code-snip"><code>ssh username@myamazingserver.ddns.net</code></div>
+                        <code class="code-snip">ssh username@myamazingserver.ddns.net</code>
                     </li>
                     <li>
                         <p>This is the easiest option for setting up (and it's free!), but it has one caveat: public IP addresses are subject to change. There are a limited number of unique IP addresses available for everyone using the internet, so your public IP address could change without you knowing. As a result, whenever the public IP address changes you'll have to manually login to your server to figure out the IP address so that you can SSH remotely. This may be a good idea for a temporary solution while you try to set up one of the first two options, but it would become too frusturating in the long run.</p>
                     
                         <p>You can use this command to access your server's public IP address:</p>
 
-                        <div class="blog-text code-snip"><code>dig +short myip.opendns.com @resolver1.opendns.com</code></div>
+                        <code class="code-snip">dig +short myip.opendns.com @resolver1.opendns.com</code>
 
                         <p>Next, use this public IP address to SSH to your server remotely.</p>
 
-                        <div class="blog-text code-snip"><code>ssh username@server-public-ip</code></div>
+                        <code class="code-snip">ssh username@server-public-ip</code>
                         
                         <p>Since public IP addresses for devices on your home network are assigned by your ISP, your public IP addresses will often change in ways that are out of your control. For example, if you have a power outage (and therefore your router is disconnected from your ISP) you can expect a new set of public IP addresses for your devices. Public IP addresses can also be reassigned due to internal network changes or power outtages on the ISP's side.</p>
                     </li>
@@ -298,7 +285,7 @@
                     <li><i><a class="links consult" title="Free static IP address" target="_blank" href="https://www.quora.com/What-is-the-best-way-to-get-a-static-public-IP-for-free">What is the best way to get a static public IP for free?</a> (quora.com)</i></li>
                     <li><i><a class="links consult" title="Configure DDNS" target="_blank" href="https://www.noip.com/support/knowledgebase/how-to-configure-ddns-in-router/">How to Confiugre DDNS (Dynamic DNS) in a Router</a> (noip.com)</i></li>
                     <li><i><a class="links consult" title="Set up SSH server" target="_blank" href="https://dev.to/zduey/how-to-set-up-an-ssh-server-on-a-home-computer">How to Set up an SSH Server on a Home Computer</a> (dev.to)</i></li>
-                     <li><i><a class="links consult" title="Install Ubuntu Server" target="_blank" href="https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-server#0">Install Ubuntu Server (Official Documentation)</a> (tutorials.ubuntu.com)</i></li>
+                     <li><i><a class="links consult" title="Install Ubuntu Server" target="_blank" href="https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-server#0">Install Ubuntu Server</a> (tutorials.ubuntu.com)</i></li>
                     <li><i><a class="links consult" title="Ubuntu setup process" target="_blank" href="https://www.process.st/checklist/ubuntu-server-setup-process/">Ubuntu Server Setup Process</a> (process.st)</i></li>
                      <li><i><a class="links consult" title="Install Ubuntu Server" target="_blank" href="https://www.youtube.com/watch?v=63KuNVSdT_g">Learn Ubuntu Server 18.04 - Base Install</a> (youtube.com)</i></li>
                     <li><i><a class="links consult" title="Install Ubuntu Server" target="_blank" href="https://www.youtube.com/watch?v=_lOwOc_UPIs">Building a Home Server Part 3: Install and Setup Ubuntu Server 18.04 LTS</a> (youtube.com)</i></li>
