@@ -104,7 +104,7 @@
                         
                         <p>For a given router IP address of 192.168.1.1, a device on the network can have a private IP address in the range 192.168.0.0 through 192.168.255.255. In most households, a private IP address is assigned to a device automatically when it connects router. In this case, the router acts as a DHCP (Dynamic Host Configuration Protocol) server. This isn't a problem for most devices, but it should be avoided for a server like the one you're setting up. Basically, a server will receive many incoming and outgoing requests, and the benefit of using a static IP address (an IP address that never changes) is that it allows you to avoid the hassle of updating the IP address you are port forwarding to everytime your server requests a new IP address. Port forwarding is not defined here; instead, it's relevance is shown in Step 5: Port forwarding.</p>
 
-                        <p>You have set up your server using the IPv4 rather than IPv6; to elaborate on the differences of these two is out of the scope of this post, but in a nutshell IPv4 and IPv6 are two different protocols for how connections are established between devices (<a class="links" title="IPv4 vs IPv6" target="_blank" href="https://hosting.review/tips-tools/ipv4-vs-ipv6/">here</a> is an interesting read that details their differences). The first thing we specified for the network configuration was the subnet in CIDR notation. This notation is unique to IPv4, and it allows a network to reuse the same private IP address. <a class="links" title="Subnet masks" target="_blank" href="https://www.youtube.com/watch?v=XQ3T14SIlV4">This</a> video gives a great explanation of how subnet masking works and provides plenty of examples if you'd like to know more.</p>
+                        <p>You have set up your server using the IPv4 rather than IPv6; to elaborate on the differences of these two is out of the scope of this post, but in a nutshell IPv4 and IPv6 are two different protocols for how connections are established between devices (<a class="links" title="IPv4 vs IPv6" target="_blank" href="https://hosting.review/tips-tools/ipv4-vs-ipv6/">here</a> is an interesting read that details their differences). The first thing to be specified for the network configuration was the subnet in CIDR notation. This notation is unique to IPv4, and it allows a network to reuse the same private IP address. <a class="links" title="Subnet masks" target="_blank" href="https://www.youtube.com/watch?v=XQ3T14SIlV4">This</a> video gives a great explanation of how subnet masking works and provides plenty of examples if you'd like to know more.</p>
 
                         <p>The last thing to note from the network configuration step are name servers. Name servers are the part of a DNS (Domain Name System) server that allows a domain name (such as acnagle.com) to be used instead of an IP address to access a host. By setting 8.8.8.8 and 8.8.4.4 as your name servers, you're using <a class="links" title="Google Public DNS" target="_blank" href="https://developers.google.com/speed/public-dns/">Google Public DNS</a> to do that lookup. This will allow you to run</p>
 
@@ -208,9 +208,9 @@
                 
                 <p>If you want to access your server from a network other than your home network, then you'll need to set up port forwarding. Port forwarding specifies where your router should forward requests sent from outside the network. Ports used in networking and physical ports, such as USB ports and HDMI ports, are similar in that they both allow data to be passed between devices. However, network ports are different in that they are software-related rather than physical.</p>
                 
-                <p>Different ports handle different tasks. For example, port 80 is the default for HTTP traffic and port 22 is the default for SSH. In Step 3: Update and install packages, we enabled the firewall by using <i>ufw</i>. Since the only request you want coming in to your server is an SSH request, all other requests should be blocked by the firewall. This can be achieved with the following command:</p>
+                <p>Different ports handle different tasks. For example, port 80 is the default for HTTP traffic and port 22 is the default for SSH. In Step 3: Update and install packages, the firewall on your server was enabled by using <i>ufw</i>. Since the only request you want coming in to your server is an SSH request, all other requests should be blocked by the firewall. This can be achieved with the following command:</p>
                 
-                <code class="code-snip">sudo ufw allow 22/tcp</code>
+                <code class="code-snip">sudo ufw allow 22</code>
                 
                 <p>In case you were wondering, TCP (Transmission Control Protocol) is simply a standard for data tranmission for a network. It's worthwhile to spend some time to learn about the features of ufw, since that's your main protection from malicious activity on your server. For example, instead of specifying a port number, you could specify a single IP address (or a range of IP addresses) to allow an SSH request from a particular device (or range of devices). You could also block specific IP address from accessing your server. The security doesn't stop here however. Depending on how secure you want your server to be, you could set up your server so that only computers that have an SSH key pair can have access.</p>
                 
@@ -219,7 +219,7 @@
                 <p>Now that the router and the server are configured for SSH, you have one of three options for accessing your server from a different network: (1) you can ask your ISP for a public static IP address, (2) you can set up a domain name using a DDNS (Dynamic DNS) (there are free options available), or (3) use the public IP address that your server was assigned (free). Each of these choices is outlined below.</p>
                 <ol>
                     <li>
-                        <p>Since there are a limited number of unique public IP addresses available to assign to the devices connected to the internet, public IP addresses are subject to change. While we could just use the public IP address anyway, it is not a feasible long term solution since the public IP address will keep changing (see option 3). One way to work around this problem is to ask your ISP for a static IP address. This will come at a monthly fee, but you will have peace of mind knowing that your public IP address will never change. Once you have your assigned static public IP address, run this command to get the address:</p>
+                        <p><b>Obtain a public static IP address.</b> Since there are a limited number of unique public IP addresses available to assign to the devices connected to the internet, public IP addresses are subject to change. While the public IP address could be used anyway, it is not a feasible long term solution since the public IP address will keep changing (see option 3). One way to work around this problem is to ask your ISP for a static IP address. This will come at a monthly fee, but you will have peace of mind knowing that your public IP address will never change. Once you have your assigned static public IP address, run this command to get the address:</p>
                     
                         <code class="code-snip">dig +short myip.opendns.com @resolver1.opendns.com</code>
                     
@@ -228,14 +228,14 @@
                         <code class="code-snip">ssh username@server-static-public-ip</code>
                     </li>
                     <li>
-                        <p>Your second option (this is the option I chose) is to use a DDNS service like <a class="links" title="Dynu DDNS service" target="_blank" href="https://www.dynu.com/">www.dynu.com</a> or some other popular DDNS service. Many DDNS allows you to use a domain name, such as acnagle.com, instead of the public IP address to connect to your server. With this option, you will choose a custom domain name, and the DDNS will periodically check your router for your server's public IP address. This configuration will require you to access the administrator's page for you router to set up DDNS with your server. Setting up your router with DDNS is fairly similar across router manufacturers: locate the DDNS page (this is likely under some sort of "Advanced" tab) and specify the DDNS server (i.e. dynu, no-ip, or some other DDNS provider), the hostname (domain name), and your DDNS username and password.</p>
+                        <p><b>Utilize a DDNS.</b> Your second option (this is the option I chose) is to use a DDNS service like <a class="links" title="Dynu DDNS service" target="_blank" href="https://www.dynu.com/">www.dynu.com</a> or some other popular DDNS service. Many DDNS allows you to use a domain nainstead of the public IP address to connect to your server. With this option, you will choose a custom domain name, and the DDNS will periodically check your router for your server's public IP address. This configuration will require you to access the administrator's page for you router to set up DDNS with your server. Setting up your router with DDNS is fairly similar across router manufacturers: locate the DDNS page (this is likely under some sort of "Advanced" tab) and specify the DDNS server (i.e. dynu, no-ip, or some other DDNS provider), the hostname (domain name), and your DDNS username and password.</p>
                         
                         <p>Once you have your DDNS settings adjusted for your router, try SSHing to your server from a different network in the following way:</p>
                         
                         <code class="code-snip">ssh username@myamazingserver.ddns.net</code>
                     </li>
                     <li>
-                        <p>This is the easiest option for setting up (and it's free!), but it has one caveat: public IP addresses are subject to change. There are a limited number of unique IP addresses available for everyone using the internet, so your public IP address could change without you knowing. As a result, whenever the public IP address changes you'll have to manually login to your server to figure out the IP address so that you can SSH remotely. This may be a good idea for a temporary solution while you try to set up one of the first two options, but it would become too frusturating in the long run.</p>
+                        <p><b>Use your server's temporary public IP address.</b> This is the easiest option for setting up (and it's free!), but it has one caveat: public IP addresses are subject to change. There are a limited number of unique IP addresses available for everyone using the internet, so your public IP address could change without you knowing. As a result, whenever the public IP address changes you'll have to manually login to your server to figure out the IP address so that you can SSH remotely. This may be a good idea for a temporary solution while you try to set up one of the first two options, but it would become too frusturating in the long run.</p>
                     
                         <p>You can use this command to access your server's public IP address:</p>
 
@@ -248,6 +248,34 @@
                         <p>Since public IP addresses for devices on your home network are assigned by your ISP, your public IP addresses will often change in ways that are out of your control. For example, if you have a power outage (and therefore your router is disconnected from your ISP) you can expect a new set of public IP addresses for your devices. Public IP addresses can also be reassigned due to internal network changes or power outtages on the ISP's side.</p>
                     </li>
                 </ol>
+                
+                <h2>Step 6: Connect using SSH keys</h2>
+                
+                <p>Although not mandatory, it's a good idea to generate a keypair as a means of authentication between the computers (clients) and the server (host). From step 5: Port forwarding, it was required that you enable port fowarding through your router and that you allow incoming requests from port 22 through the firewall. However, this opens the opportunity for entities on the internet to use brute-force attacks to determine your password; by requiring the use of SSH keys, your server will not be susceptible to these types of attacks. You can check if you already have a keypair by typing</p>
+                
+                <code class="code-snip">ls ~/.ssh/</code>
+                
+                <p>on the client machine. You should be able to find all your keys here; if you do have at least one keypair, feel free to use that. Otherwise, you can generate a new key pair using</p>
+                
+                <code class="code-snip">ssh-keygen</code>
+                
+                <p>and answering the questions that follow, including which directory you want to save your keypair (FYI: it's a bad idea to save your keypairs anywhere other than in <i>~/.ssh/</i>). Once you have a keypair, run</p>
+                
+                <code class="code-snip">ssh-copy-id -i ~/.ssh/your_public_key.pub username@myamazingserver.ddns.net</code>
+                
+                <p>to share the client's public key with your server. Lastly, run</p>
+                
+                <code class="code-snip">sudo nano /etc/ssh/sshd_config</code>
+                
+                <p>Find the line that says</p>
+                
+                <code class="code-snip">#PasswwordAuthentication yes</code>
+                
+                <p>and replace it with</p>
+                
+                <code class="code-snip">PasswordAuthentication no</code>
+                
+                <p>to remove the ability to login to your server using a password. Press <i>ctrl+O</i> to save the changes and <i>ctrl+X</i> to exit nano.</p>
                 
                 <p>You now have a working Ubuntu SSH Server that you can access from anywhere you'd like! A server like this is especially useful for backing up files from different computers you own, or running code or machine learning models that have long runtimes.</p>
                                                 
