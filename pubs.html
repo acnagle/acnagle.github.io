@@ -31,29 +31,72 @@
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-TileImage" content="img//mstile-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    
+
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <style>
         .pub {
             margin: auto;
             color: #000000;
             width: 55%;
-            border-top: none;
-            border-left: none;
-            padding: 25px;
+            padding: 15px;
             position: relative;
-            display: block;
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 20px;
             overflow: auto;
             max-width: 100%;
             max-height: 100%;
         }
-        
-        .pub-link:link, .pub-link:visited, .pub-link:hover, .pub-link:active {
-            color: #000000;
+
+        .venue {
+            font-weight: bold;
+            color: #555555;
+            white-space: nowrap;
+            align-self: start; /* Align to the top of the grid cell */
+        }
+
+        .pub-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pub-title {
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+        .pub-authors {
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+        .pub-links {
+            margin: 0;
+        }
+
+        .highlight-author {
+            font-style: italic;
+            /*background-color: #94d1ff;*/
+            color: #0077B5;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Responsive Design: Adjust grid layout on smaller screens */
+        @media (max-width: 600px) {
+            .pub {
+                grid-template-columns: 100px 1fr;
+                padding: 15px;
+            }
+
+            .venue {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -64,7 +107,7 @@
     <![endif]-->
 
     <div style="padding-top: 35px; padding-bottom: 35px;">
-        <div class="main-window">
+        <div class="main-window" style="padding-bottom: 50px;">
             <div style="padding-bottom: 25px;">
                 <ul class="nav">
                     <li><a href="index.html">Home 🏡</a></li>
@@ -93,19 +136,60 @@
                 <h1 style="text-align: center;">Publications</h1>
             </div>
             <div class="pub">
-                <p style="margin: 0px; "><b>Optimal Lottery Tickets via SubsetSum: Logarithmic Over-Parameterization is Sufficient</b></p>
-                <p style="margin: 0px; ">Ankit Pensia, Shashank Rajput, <i>Alliot Nagle</i>, Harit Vishwakarma, Dimitris Papailiopoulos</p>
-                <p style="margin: 0px; ">[<a href="https://proceedings.neurips.cc/paper/2020/hash/1b742ae215adf18b75449c6e272fd92d-Abstract.html" title="Optimal Lottery Tickets" target="_blank" class="pub-link">paper</a>] [<a href="https://github.com/acnagle/optimal-lottery-tickets" title="Optimal Lottery Tickets" target="_blank" class="pub-link">code</a>]</p>
+                <div class="venue">[NeurIPS 2024]</div>
+                <div class="pub-details">
+                    <p class="pub-title">Fundamental Limits of Prompt Compression: A Rate-Distortion Framework for Black-Box Language Models</p>
+                    <p class="pub-authors"><span class="highlight-author">Alliot Nagle*</span>, Adway Girish*, Marco Bondaschi, Michael Gastpar, Ashok Vardhan Makkuva, Hyeji Kim</p>
+                    <p class="pub-links">[<a class="links" href="https://arxiv.org/abs/2407.15504" title="Fundamental Limits of Prompt Compression" target="_blank">paper</a>] [<a class="links" href="" title="Fundamental Limits of Prompt Compression Code" target="_blank">code coming soon</a>]</p>
+                </div>
             </div>
             <div class="pub">
-                <p style="margin: 0px; "><b>Rare Gems: Finding Lottery Tickets at Initialization</b></p>
-                <p style="margin: 0px; ">Kartik Sreenivasan, Jy-yong Sohn, Liu Yang, Matthew Grinde, <i>Alliot Nagle</i>, Hongyi Wang, Eric Xing, Kangwook Lee, Dimitris Papailiopoulos</p>
-                <p style="margin: 0px; ">[<a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/5d52b102ebd672023628cac20e9da5ff-Abstract-Conference.html" title="Rare Gems" target="_blank" class="pub-link">paper</a>] [<a href="https://github.com/ksreenivasan/pruning_is_enough" title="Rare Gems" target="_blank" class="pub-link">code</a>]</p>
+                <div class="venue">[NeurIPS 2024]</div>
+                <div class="pub-details">
+                    <p class="pub-title">Local to Global: Learning Dynamics and Effect of Initialization for Transformers</p>
+                    <p class="pub-authors">Ashok Vardhan Makkuva*, Marco Bondaschi*, Chanakya Ekbote, Adway Girish, <span class="highlight-author">Alliot Nagle</span>, Hyeji Kim, Michael Gastpar</p>
+                    <p class="pub-links">[<a class="links" href="https://arxiv.org/abs/2406.03072" title="Local to Global" target="_blank">paper</a>] [<a class="links" href="https://github.com/Bond1995/Markov" title="Local to Global Code" target="_blank">code</a>]</p>
+                </div>
             </div>
             <div class="pub">
-                <p style="margin: 0px; "><b>Improved high-dimensional multivariate autoregressive model estimation of human electrophysiological data using fMRI priors</b></p>
-                <p style="margin: 0px; "><i>Alliot Nagle</i>, Josh P. Gerrelts, Bryan M. Krause, Aaron D. Boes, Joel E. Bruss, Kirill V. Nourski, Matthew I. Banks, Barry Van Veen</p>
-                <p style="margin: 0px; ">[<a href="https://www.sciencedirect.com/science/article/pii/S1053811923003622" title="fMRI Priors" target="_blank" class="pub-link">paper</a>]</p>
+                <div class="venue">[JSAIT 2024]</div>
+                <div class="pub-details">
+                    <p class="pub-title">Neural Distributed Source Coding</p>
+                    <p class="pub-authors">Jay Whang*, <span class="highlight-author">Alliot Nagle*</span>, Anish Acharya, Hyeji Kim, Alexandros Dimakis</p>
+                    <p class="pub-links">[<a class="links" href="https://ieeexplore.ieee.org/document/10557705" title="Neural Distributed Source Coding" target="_blank">paper</a>] [<a class="links" href="https://github.com/acnagle/neural-dsc" title="Neural DSC Code" target="_blank">code</a>]</p>
+                </div>
+            </div>
+            <div class="pub">
+                <div class="venue">[Prepint 2024]</div>
+                <div class="pub-details">
+                    <p class="pub-title">Attention with Markov: A Framework for Principled Analysis of Transformers via Markov Chains</p>
+                    <p class="pub-authors">Ashok Vardhan Makkuva*, Marco Bondaschi*, Adway Girish, <span class="highlight-author">Alliot Nagle</span>, Martin Jaggi, Hyeji Kim, Michael Gastpar</p>
+                    <p class="pub-links">[<a class="links" href="https://arxiv.org/abs/2402.04161" title="Attention with Markov" target="_blank">paper</a>] [<a class="links" href="https://github.com/Bond1995/Markov" title="Attention with Markov Code" target="_blank">code</a>]</p>
+                </div>
+            </div>
+            <div class="pub">
+                <div class="venue">[NeuroImage 2023]</div>
+                <div class="pub-details">
+                    <p class="pub-title">Improved high-dimensional multivariate autoregressive model estimation of human electrophysiological data using fMRI priors</p>
+                    <p class="pub-authors"><span class="highlight-author">Alliot Nagle</span>, Josh P. Gerrelts, Bryan M. Krause, Aaron D. Boes, Joel E. Bruss, Kirill V. Nourski, Matthew I. Banks, Barry Van Veen</p>
+                    <p class="pub-links">[<a class="links" href="https://www.sciencedirect.com/science/article/pii/S1053811923003622" title="fMRI Priors" target="_blank">paper</a>]</p>
+                </div>
+            </div>
+            <div class="pub">
+                <div class="venue">[NeurIPS 2022]</div>
+                <div class="pub-details">
+                    <p class="pub-title">Rare Gems: Finding Lottery Tickets at Initialization</p>
+                    <p class="pub-authors">Kartik Sreenivasan, Jy-yong Sohn, Liu Yang, Matthew Grinde, <span class="highlight-author">Alliot Nagle</span>, Hongyi Wang, Eric Xing, Kangwook Lee, Dimitris Papailiopoulos</p>
+                    <p class="pub-links">[<a class="links" href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/5d52b102ebd672023628cac20e9da5ff-Abstract-Conference.html" title="Rare Gems" target="_blank">paper</a>] [<a class="links" href="https://github.com/ksreenivasan/pruning_is_enough" title="Rare Gems Code" target="_blank">code</a>]</p>
+                </div>
+            </div>
+            <div class="pub">
+                <div class="venue">[NeurIPS 2020]</div>
+                <div class="pub-details">
+                    <p class="pub-title">Optimal Lottery Tickets via SubsetSum: Logarithmic Over-Parameterization is Sufficient</p>
+                    <p class="pub-authors">Ankit Pensia, Shashank Rajput, <span class="highlight-author">Alliot Nagle</span>, Harit Vishwakarma, Dimitris Papailiopoulos</p>
+                    <p class="pub-links">[<a class="links" href="https://proceedings.neurips.cc/paper/2020/hash/1b742ae215adf18b75449c6e272fd92d-Abstract.html" title="Optimal Lottery Tickets" target="_blank">paper</a>] [<a class="links" href="https://github.com/acnagle/optimal-lottery-tickets" title="Optimal Lottery Tickets Code" target="_blank">code</a>]</p>
+                </div>
             </div>
         </div>
     </div>
@@ -124,4 +208,6 @@
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 -->
 </body>
+
 </html>
+

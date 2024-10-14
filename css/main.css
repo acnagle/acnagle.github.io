@@ -209,18 +209,22 @@ body {
 
 .links:link {
     color: #008000;
+    text-decoration: none;
 }
 
 .links:visited {
     color: #008000;
+    text-decoration: none;
 }
 
 .links:hover {
     color: #206020;
+    text-decoration: underline;
 }
 
 .links:active {
     color: #206020;
+    text-decoration: underline;
 }
 
 

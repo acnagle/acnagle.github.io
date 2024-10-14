@@ -35,8 +35,9 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
     <style>
         .profile-pic {
             float: left;
@@ -47,13 +48,47 @@
             width: 325px;
             height: auto;
         }
-        
+
+        /* News & Updates Section */
+        .news-updates {
+            clear: both;
+            padding: 25px;
+            background-color: #f9f9f9; /* Light background for differentiation */
+            border-top: 2px solid #e0e0e0;
+            margin-top: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .news-updates h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .news-updates ul {
+            list-style-type: none; /* Remove default bullets */
+            padding: 0;
+        }
+
+        .news-updates li {
+            background: #ffffff;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-updates li strong {
+            color: #0077B5;
+        }
+
+        /* Social Media Icons */
         .social {
             text-align: center;
+            padding-top: 25px;
             padding-bottom: 25px;
         }
         
-        .fa {
+        .fa-icon {
             padding: 10px;
             font-size: 30px;
             width: 30px;
@@ -63,32 +98,37 @@
             border-radius: 50%;
         }
 
-        .fa:hover {
+        .fa-icon:hover {
             opacity: 0.7;
         }
         
-        .fa-envelope {
+        .fa-icon-email {
             background: #009900;
             color: #ffffff;
         }
         
-        .fa-linkedin {
+        .fa-icon-linkedin {
             background: #0077B5;
             color: #ffffff;
         }
         
-        .fa-github {
+        .fa-icon-github {
             background: #000000;
             color: #ffffff;
         }
         
-        .fa-twitter {
+        .fa-icon-twitter {
             background: #1DA1F2;
             color: #ffffff;
         }
-        
-        .fa-google {
+
+        .fa-icon-google-scholar {
             background: #357DF4;
+            color: #ffffff;
+        }
+        
+        .fa-icon-youtube {
+            background: #FF0000;
             color: #ffffff;
         }
     </style>
@@ -129,19 +169,32 @@
                 <h1 style="text-align: center;">Alliot Nagle</h1>
             </div>
             <div style="float: left; padding: 25px; ">
-                <img class= "profile-pic" src="./img/profile_pic2.jpg" alt="Profile Picture">
+                <img class= "profile-pic" src="./img/profile_pic3.jpg" alt="Profile Picture">
                 <div class="text">
-                    <p><i><b>Hello!</b></i> I am a second-year PhD student in the ECE department at UT Austin, and I am advised by <a class="links" title="Visit Hyeji Kim's faculty webpage" target="_blank" href="https://www.ece.utexas.edu/people/faculty/hyeji-kim">Prof. Hyeji Kim</a>. During my years as an undergraduate and master's student in the ECE department at UW-Madison, I was advised by <a class="links" title="Visit Dimitris' personal wesbite" target="_blank" href="http://papail.io">Prof. Dimitris Papailiopoulos</a>.</p>
-                    <p>Broadly speaking, my research interests are within machine learning and information theory. More specifically, I am interested in LLMs, representation learning, and methods for efficient training and inference.</p>
-                    <p>I have many interests and I hold an appreciation for culture-rich music. My interests and hobbies include weight training, nutrition, reading, running, biking, and playing drum set. I enjoy listening to and learning about music of the African diaspora, namely the music of Cuba and Brazil.</p>
+                    <p><i><b>Hello!</b></i> I am a third-year PhD student in the ECE department at UT Austin, and I am advised by <a class="links" title="Visit Hyeji Kim's faculty webpage" target="_blank" href="https://www.ece.utexas.edu/people/faculty/hyeji-kim">Prof. Hyeji Kim</a>. During my years as an undergraduate and master's student in the ECE department at UW-Madison, I was advised by <a class="links" title="Visit Dimitris' personal wesbite" target="_blank" href="http://papail.io">Prof. Dimitris Papailiopoulos</a>.</p>
+                    <p>Broadly speaking, my research interests are within the intersection of machine learning and information theory. More specifically, I am interested in LLMs, representation learning, and methods for efficient training and inference.</p>
+                    <p>I have many hobbies and I hold an appreciation for culture-rich music. My most recent interests and hobbies include weight training, nutrition and cooking, learning Korean, and playing drum set. I enjoy listening to and learning about music of the African diaspora, namely the music of Cuba and Brazil.</p>
                 </div>
             </div>
+            <div class="news-updates">
+                <h2>News &amp; Updates</h2>
+                <ul>
+                    <li>
+                        <strong>September 2024:</strong> Two of our works, <a class="links" href="https://arxiv.org/abs/2407.15504" title="Fundamental Limits of Prompt Compression" target="_blank">Fundamental Limits of Prompt Compression: A Rate-Distortion Framework for Black-Box Language Models</a> and <a class="links" href="https://arxiv.org/abs/2406.03072" title="Local to Global" target="_blank">Local to Global: Learning Dynamics and Effect of Initialization for Transformers</a>, are accepted to NeurIPS 2024.</li>
+                    <li>
+                        <strong>July 2024:</strong> Presented our work, <a class="links" href="https://arxiv.org/abs/2407.15504" title="Fundamental Limits of Prompt Compression" target="_blank">Fundamental Limits of Prompt Compression: A Rate-Distortion Framework for Black-Box Language Models</a>, as one of the four selected oral presentations in the <a class="links" href="https://sites.google.com/view/tf2m" title="TF2M workshop webiste" target="_blank">TF2M Workshop</a> at ICML 2024. A recording of our
+                        talk can be found <a class="links" href="https://icml.cc/virtual/2024/workshop/29956" title="TF2M recordings" target="_blank">here</a>.</li>
+                    <li>
+                        <strong>June 2024:</strong> <a class="links" href="https://ieeexplore.ieee.org/document/10557705" title="Neural Distributed Source Coding" target="_blank">Neural Distributed Source Coding</a> will be published in a <a class="links" href="https://www.itsoc.org/news/jsait-special-issue-dedicated-memory-toby-berger-data-physics-and-life-through-lens" title="JSAIT special issue" target="_blank">special issue of JSAIT</a>.</li>
+                </ul>
+            </div>
             <div class="social">
-                <a href="mailto:acnagle@utexas.edu?Subject=Contact%20Request" title="email" class="fa fa-envelope"></a>
-                <a href="https://www.linkedin.com/in/alliot-nagle" title="LinkedIn" target="_blank" class="fa fa-linkedin"></a>
-                <a href="https://twitter.com/AlliotNagle" title="Twitter" target="_blank" class="fa fa-twitter"></a>
-                <a href="https://github.com/acnagle" title="GitHub" target="_blank" class="fa fa-github"></a>
-                <a href="https://scholar.google.com/citations?user=OUilkgIAAAAJ" title="Google Scholar" target="_blank" class="fa fa-google"></a>
+                <a href="mailto:acnagle@utexas.edu?Subject=Contact%20Request" title="email" class="fa-solid fa-envelope fa-icon fa-icon-email"></a>
+                <a href="https://www.linkedin.com/in/alliot-nagle" title="LinkedIn" target="_blank" class="fa-brands fa-linkedin fa-icon fa-icon-linkedin"></a>
+                <a href="https://twitter.com/AlliotNagle" title="Twitter" target="_blank" class="fa-brands fa-twitter fa-icon fa-icon-twitter"></a>
+                <a href="https://github.com/acnagle" title="GitHub" target="_blank" class="fa-brands fa-github fa-icon fa-icon-github"></a>
+                <a href="https://scholar.google.com/citations?user=OUilkgIAAAAJ" title="Google Scholar" target="_blank" class="fa-brands fa-google-scholar fa-icon fa-icon-google-scholar"></a>
+                <!-- <a href="https://www.youtube.com/@alliotnagle8703" title="YouTube" target="_blank" class="fa-brands fa-youtube fa-icon fa-icon-youtube"></a> -->
             </div>
         </div>
     </div>
